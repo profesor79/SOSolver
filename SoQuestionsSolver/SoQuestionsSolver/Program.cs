@@ -28,7 +28,7 @@ namespace ConsoleApplication2
 
             var aggregationDocument = collection.Aggregate()
                 .Match(x=>x.LastUpdate> DateTime.Now.AddDays(-40))
-                .Sort(BsonDocument.Parse("{ LastUpdate:-1}"))
+                .SortByDescending(x => x.LastUpdate)
                 .Group(BsonDocument.Parse("{ _id:'$Emp_ID', documents:{ '$push':'$$ROOT'}}"))
                 .Project<AggregationResult>(BsonDocument.Parse("{ _id:1, documents:{ $slice:['$documents', 3]}}")).ToList()
                 ;
