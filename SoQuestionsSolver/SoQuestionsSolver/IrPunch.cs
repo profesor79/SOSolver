@@ -14,7 +14,7 @@ namespace ConsoleApplication2
     using MongoDB.Driver;
 
     /// <summary>TODO The program.</summary>
-    class Program
+    class IrPunch
     {
         /// <summary>TODO The main.</summary>
         public static void IrPunchMain()
