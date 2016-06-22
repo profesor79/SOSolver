@@ -20,10 +20,10 @@ namespace ConsoleApplication2
     using MongoDB.Driver;
 
     /// <summary>TODO The program.</summary>
-    class Program
+    class ProgramHammer
     {
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void MainHammer()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("test");
