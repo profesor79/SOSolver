@@ -17,7 +17,13 @@ namespace ConsoleApplication2
     class Lapsus
     {
         /// <summary>TODO The main.</summary>
-        public static async void Main()
+        public static void M3ain()
+        {
+            Main2();
+        }
+
+        /// <summary>TODO The main 2.</summary>
+        public static async void Main2()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("test");
@@ -25,13 +31,23 @@ namespace ConsoleApplication2
             var collection = database.GetCollection<MongoDbRepositoryItem>("Lapsus");
 
             var builder = Builders<MongoDbRepositoryItem>.Filter;
+            var b2 = new FilterDefinitionBuilder<MongoDbRepositoryItem>();
+            var f2 = b2.Exists(x => x.ProcessingStatus, false);
+            var result2 = await collection.FindAsync<MongoDbRepositoryItem>(f2);
 
             // I didn't read about sorting yet. I also need the "oldest" document.
             var filter = builder.Exists(item => item.ProcessingStatus, false);
 
-            var result = await collection.FindAsync<MongoDbRepositoryItem>(filter);
+            try
+            {
+                var result = collection.FindAsync<MongoDbRepositoryItem>(filter).Result;
+                var data = result.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
-            var data = result.ToList();
             Console.ReadLine();
 
             // problemSolved:  and new in mongo query
