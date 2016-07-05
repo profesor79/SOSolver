@@ -31,6 +31,33 @@ namespace ConsoleApplication2
 
             var collection = database.GetCollection<Family>("thomas");
 
+            var f = GenerateFaimly();
+            collection.InsertOne(f);
+
+            var sort = BsonDocument.Parse("{\"kids.dateOfBirth\": -1}"); // get the youngest 
+            var project =
+                BsonDocument.Parse(
+                    "{_id:'$children._id', dateOfBirth:'$children.dateOfBirth', givenName:'$children.givenName', IsAlive:'$children.IsAlive'}");
+            var aggregate = collection.Aggregate().Match(x => x.Id == f.Id)
+
+                // .Project(x => new { kids = x.children })
+                .Unwind("children").Sort(sort).Limit(1).Project<Child>(project);
+
+            Console.WriteLine(aggregate.ToString());
+
+            var result = aggregate.FirstOrDefault();
+
+            var pojectionIsAlive =
+                BsonDocument.Parse(
+                    "{_id:1, name:1, children:{$filter:{ input:'$children', as:'kids', cond:{$eq:['$$kids.IsAlive', true]}}}}");
+
+            var kids = collection.Aggregate().Match(x => x.Id == f.Id).Project<Family>(pojectionIsAlive).ToList();
+        }
+
+        /// <summary>TODO The generate faimly.</summary>
+        /// <returns>The <see cref="Family" />.</returns>
+        private static Family GenerateFaimly()
+        {
             var f = new Family
                         {
                             Id = ObjectId.GenerateNewId(), 
@@ -75,29 +102,7 @@ namespace ConsoleApplication2
                                             }
                                     }
                         };
-            collection.InsertOne(f);
-
-            var sort = BsonDocument.Parse("{\"kids.dateOfBirth\": -1}"); // get the youngest 
-            var project =
-                BsonDocument.Parse(
-                    "{_id:'$children._id', dateOfBirth:'$children.dateOfBirth', givenName:'$children.givenName', IsAlive:'$children.IsAlive'}");
-            var aggregate = collection.Aggregate().Match(x => x.Id == f.Id)
-
-                // .Project(x => new { kids = x.children })
-                .Unwind("children").Sort(sort).Limit(1).Project<Child>(project);
-
-            Console.WriteLine(aggregate.ToString());
-
-            var result = aggregate.FirstOrDefault();
-
-            var filterDef = new FilterDefinitionBuilder<Family>();
-            var filter = filterDef.Eq(x => x.Id, f.Id);
-            var projectDef = new ProjectionDefinitionBuilder<Family>();
-            var projection = projectDef.ElemMatch<Child>("Children", "{IsAlive:true}");
-
-            var kids = collection.Find(filter).Project<Family>(projection).First();
-
-            var child2 = kids.children[0];
+            return f;
         }
 
         /// <summary>TODO The child.</summary>
