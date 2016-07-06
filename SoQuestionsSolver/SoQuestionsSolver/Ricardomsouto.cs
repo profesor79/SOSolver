@@ -23,7 +23,7 @@ namespace ConsoleApplication2
     class Program
     {
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void MainRichard()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("test");
