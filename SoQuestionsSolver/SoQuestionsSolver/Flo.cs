@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="Thomas.cs" company="">
+// <copyright file="Flo.cs" company="">
 //   
 // </copyright>
 // <summary>
@@ -9,49 +9,41 @@
 namespace ConsoleApplication2
 {
     using System;
+    using System.IO;
+    using System.Linq;
+    using System.Runtime.Serialization.Formatters.Binary;
+    using System.Text;
 
     using MongoDB.Bson;
-    using MongoDB.Bson.Serialization;
     using MongoDB.Driver;
 
     /// <summary>TODO The program.</summary>
-    class Thomas
+    class Flo
     {
+        /// <summary>TODO The data.</summary>
+        private static string data;
+
         /// <summary>TODO The main.</summary>
-        public static void Main2()
+        public static void Main()
         {
-            BsonClassMap.RegisterClassMap<Child>(
-                cm =>
-                    {
-                        cm.AutoMap();
-                        cm.SetIgnoreExtraElements(true);
-                    });
+            GenerateStringData();
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("test");
 
             var collection = database.GetCollection<Family>("thomas");
 
-            var f = GenerateFaimly();
-            collection.InsertOne(f);
+            // var f = GenerateFaimly();
+            // collection.InsertOne(f);
+            var filter = new FilterDefinitionBuilder<Family>();
+            filter.Where(x => x.Id == new ObjectId("577ba98534780d45d0c80ec3")).ToBsonDocument();
 
-            var sort = BsonDocument.Parse("{\"kids.dateOfBirth\": -1}"); // get the youngest 
-            var project =
-                BsonDocument.Parse(
-                    "{_id:'$children._id', dateOfBirth:'$children.dateOfBirth', givenName:'$children.givenName', IsAlive:'$children.IsAlive'}");
-            var aggregate = collection.Aggregate().Match(x => x.Id == f.Id)
+            long size = 0;
 
-                // .Project(x => new { kids = x.children })
-                .Unwind("children").Sort(sort).Limit(1).Project<Child>(project);
+            var document = collection.Find(x => x.Id == new ObjectId("577ba98534780d45d0c80ec3")).First();
 
-            Console.WriteLine(aggregate.ToString());
-
-            var result = aggregate.FirstOrDefault();
-
-            var pojectionIsAlive =
-                BsonDocument.Parse(
-                    "{_id:1, name:1, children:{$filter:{ input:'$children', as:'kids', cond:{$eq:['$$kids.IsAlive', true]}}}}");
-
-            var kids = collection.Aggregate().Match(x => x.Id == f.Id).Project<Family>(pojectionIsAlive).ToList();
+            // PushDocumentsToArray(size, f, collection);
+            Console.WriteLine("ready");
+            Console.ReadLine();
         }
 
         /// <summary>TODO The generate faimly.</summary>
@@ -105,9 +97,59 @@ namespace ConsoleApplication2
             return f;
         }
 
+        /// <summary>TODO The generate string data.</summary>
+        private static void GenerateStringData()
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < 500; i++)
+            {
+                sb.AppendLine(i.ToString());
+            }
+
+            data = sb.ToString();
+        }
+
+        /// <summary>TODO The push documents to array.</summary>
+        /// <param name="size">TODO The size.</param>
+        /// <param name="f">TODO The f.</param>
+        /// <param name="collection">TODO The collection.</param>
+        private static void PushDocumentsToArray(long size, Family f, IMongoCollection<Family> collection)
+        {
+            while (size <= 16777216)
+            {
+                var kid = new Child
+                              {
+                                  Id = ObjectId.GenerateNewId(), 
+                                  givenName =
+                                      "Child 1skdjfilahfuiaehfa feh fh fu hfuh fhsadhldiufhkjl ah hc hafha fwebffhsrhddhv  hfhfhwehfahfkjhewkhj32xjrjciojeacehf 4 cq43 rb4jhxrjq4hbr h43x rhq43xrjhq43vfq3vrqv3 r43vxfxqv43kxvkq3vkhv4fkqv43hvrkxqhwd8493uidicsurehjrxhhwrxf f  qhfuhfiuqh3ixhiuqhdihqhdiqhz2i3rhi3qx4hrxihioh3rxsidixma4wutc984yu98tu9483c984798xjfojdsfjoiasdfoa", 
+                                  dateOfBirth = DateTime.Now.AddDays(-800), 
+                                  d = data, 
+                                  IsAlive = true
+                              };
+
+                var kids = f.children.ToList();
+                kids.Add(kid);
+                f.children = kids.ToArray();
+
+                collection.FindOneAndReplace(family => family.Id == f.Id, f);
+
+                using (Stream s = new MemoryStream())
+                {
+                    var formatter = new BinaryFormatter();
+                    formatter.Serialize(s, f);
+                    size = s.Length;
+                    Console.WriteLine($"size of object is: {size / 1024} kbytes");
+                }
+            }
+        }
+
         /// <summary>TODO The child.</summary>
+        [Serializable]
         public class Child
         {
+            /// <summary>Gets or sets the d.</summary>
+            public string d { get; set; }
+
             /// <summary>Gets or sets the date of birth.</summary>
             public DateTime dateOfBirth { get; set; }
 
@@ -122,6 +164,7 @@ namespace ConsoleApplication2
         }
 
         /// <summary>TODO The family.</summary>
+        [Serializable]
         class Family
         {
             /// <summary>Gets or sets the children.</summary>
