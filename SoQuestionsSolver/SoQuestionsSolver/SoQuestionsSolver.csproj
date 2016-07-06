@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Flo - Copy.cs" />
     <Compile Include="Flo.cs" />
     <Compile Include="Thomas.cs" />
     <Compile Include="Lapsus.cs" />

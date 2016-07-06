@@ -24,7 +24,7 @@ namespace ConsoleApplication2
         private static string data;
 
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void Main23()
         {
             GenerateStringData();
             var client = new MongoClient("mongodb://localhost:27017");
@@ -36,8 +36,6 @@ namespace ConsoleApplication2
             // collection.InsertOne(f);
             var filter = new FilterDefinitionBuilder<Family>();
             filter.Where(x => x.Id == new ObjectId("577ba98534780d45d0c80ec3")).ToBsonDocument();
-
-            long size = 0;
 
             var document = collection.Find(x => x.Id == new ObjectId("577ba98534780d45d0c80ec3")).First();
 
