@@ -55,12 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Flo - Copy.cs" />
-    <Compile Include="Flo.cs" />
-    <Compile Include="Thomas.cs" />
-    <Compile Include="Lapsus.cs" />
-    <Compile Include="Andrei.cs" />
-    <Compile Include="Kalaimani.cs" />
     <Compile Include="Ricardomsouto.cs" />
     <Compile Include="Hammer.cs" />
     <Compile Include="IrPunch.cs" />
