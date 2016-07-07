@@ -17,7 +17,7 @@ namespace ConsoleApplication2
     class Boas
     {
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void Main3()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("test");
@@ -38,8 +38,9 @@ namespace ConsoleApplication2
                 BsonDocument.Parse(
                     "{Key:1, Timestamp:1, year:{$year:'$Timestamp'}, dayOfYear:{$dayOfYear:'$Timestamp'}}");
             var group = BsonDocument.Parse("{_id:{year:'$year', dayOfYear:'$dayOfYear'}, count:{$sum:1}}");
-            var result = collection.Aggregate().Project(project).Group(group).ToList();
+            var result = collection.Aggregate().Project(x => new { x }).Group(group).ToList();
 
+            // .Project(i => new { i.Key, dayOfYear = i.Timestamp.GetDayOfYear,  year = i.Timestamp.GetYear })
             Console.ReadLine();
         }
 
