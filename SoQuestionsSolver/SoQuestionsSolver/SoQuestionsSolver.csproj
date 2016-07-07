@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boas.cs" />
     <Compile Include="Ricardomsouto.cs" />
     <Compile Include="Hammer.cs" />
     <Compile Include="IrPunch.cs" />
