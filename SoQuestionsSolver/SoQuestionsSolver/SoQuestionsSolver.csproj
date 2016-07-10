@@ -56,7 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="andrei.cs" />
-    <Compile Include="Flo - Copy.cs" />
+    <Compile Include="Inquisitive_one.cs" />
+    <Compile Include="Woozar.cs" />
     <Compile Include="Flo.cs" />
     <Compile Include="Kalaimani.cs" />
     <Compile Include="Lapsus.cs" />

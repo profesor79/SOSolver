@@ -26,7 +26,7 @@ namespace ConsoleApplication2
     internal class Yogevnn
     {
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void MainY()
         {
             var worker = new Processor();
             worker.ProcessData();

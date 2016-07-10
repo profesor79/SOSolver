@@ -20,7 +20,7 @@ namespace ConsoleApplication2
         private static string data;
 
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void MainWoozar()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("test");
