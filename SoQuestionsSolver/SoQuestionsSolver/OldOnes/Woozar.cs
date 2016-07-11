@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="Flo - Copy.cs" company="">
+// <copyright file="Woozar.cs" company="">
 //   
 // </copyright>
 // <summary>
@@ -20,7 +20,7 @@ namespace ConsoleApplication2
         private static string data;
 
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void MainW()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("test");
