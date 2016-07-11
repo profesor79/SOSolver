@@ -56,11 +56,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlexGurskiy.cs" />
+    <Compile Include="Andrei.cs" />
     <Compile Include="Boas.cs" />
+    <Compile Include="Woozar.cs" />
+    <Compile Include="Flo.cs" />
+    <Compile Include="Kalaimani.cs" />
+    <Compile Include="Lapsus.cs" />
     <Compile Include="Ricardomsouto.cs" />
     <Compile Include="Hammer.cs" />
     <Compile Include="IrPunch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Thomas.cs" />
+    <Compile Include="Yogevnn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

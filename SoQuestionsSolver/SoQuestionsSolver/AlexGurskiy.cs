@@ -18,7 +18,7 @@ namespace ConsoleApplication2
     class AlexGurskiy
     {
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void Main1()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("test");
@@ -35,6 +35,7 @@ namespace ConsoleApplication2
                     .Project<Product>(BsonDocument.Parse("{_id:'$_id.id', ItemsCount:'$_id.ItemsCount', Items:1  }"))
                     .ToList();
 
+            // var docs = collection.AsQueryable().Where(c => c.FSTicker.Contains(c.Sedol)).ToList();
             Console.ReadLine();
         }
 
@@ -51,11 +52,17 @@ namespace ConsoleApplication2
             /// <summary>Gets or sets the _id.</summary>
             public string _id { get; set; }
 
+            /// <summary>Gets or sets the fs ticker.</summary>
+            public string FSTicker { get; set; }
+
             /// <summary>Gets or sets the items.</summary>
             public IEnumerable<Item> Items { get; set; }
 
             /// <summary>Gets or sets the items count.</summary>
             public int ItemsCount { get; set; }
+
+            /// <summary>Gets or sets the sedol.</summary>
+            public string Sedol { get; set; }
         }
     }
 }
