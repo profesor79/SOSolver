@@ -35,21 +35,21 @@ namespace SoQuestionsSolver
 
             var y = new Datapull { Company = "msft2", Sedol = "1112", FSTicker = "111" };
 
-            _collection.InsertOne(x);
-            _collection.InsertOne(y);
+            // _collection.InsertOne(x);
+            // _collection.InsertOne(y);
         }
 
         /// <summary>TODO The then try to use where clause.</summary>
         [Then(@"Try to use where clause")]
         public void ThenTryToUseWhereClause()
         {
-            var result = _collection.AsQueryable().Where(x => x.FSTicker == x.Sedol).ToList();
+            //var result = _collection.AsQueryable().Where(x => x.FSTicker == x.Sedol).ToList();
 
-            foreach (var r in result)
-            {
-                Debug.Write($"{r.FSTicker}{r.Sedol}");
-                r.FSTicker.Should().Equals(r.Sedol);
-            }
+            //foreach (var r in result)
+            //{
+            //    Debug.Write($"{r.FSTicker}{r.Sedol}");
+            //    r.FSTicker.Should().Equals(r.Sedol);
+            //}
         }
 
         /// <summary>TODO The then will get only result with same fields value.</summary>

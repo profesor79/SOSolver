@@ -9,7 +9,7 @@ https://jira.mongodb.org/browse/CSHARP-1700
 Scenario: comparison
 Given ComparisionSampleData
 	Then Will get only result with same fields value
-	Then Try to use where clause
+#	Then Try to use where clause
 
 
  

@@ -88,6 +88,8 @@
     <Compile Include="OldOnes\Ricardomsouto.cs" />
     <Compile Include="OldOnes\Hammer.cs" />
     <Compile Include="OldOnes\IrPunch.cs" />
+    <Compile Include="OldOnes\Inquisitive_one2.cs" />
+    <Compile Include="OldOnes\_Master.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OldOnes\Thomas.cs" />
     <Compile Include="OldOnes\Yogevnn.cs" />

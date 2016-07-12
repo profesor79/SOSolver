@@ -78,8 +78,6 @@ this.ScenarioSetup(scenarioInfo);
 testRunner.Given("ComparisionSampleData", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 11
  testRunner.Then("Will get only result with same fields value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 12
- testRunner.Then("Try to use where clause", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
