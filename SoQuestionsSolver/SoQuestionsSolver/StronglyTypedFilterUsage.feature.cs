@@ -18,22 +18,21 @@ namespace SoQuestionsSolver
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("CompareOnSameDocumentFields")]
-    public partial class CompareOnSameDocumentFieldsFeature
+    [NUnit.Framework.DescriptionAttribute("StronglyTypedFilterUsage")]
+    public partial class StronglyTypedFilterUsageFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "CompareOnSameDocumentFields.feature"
+#line 1 "StronglyTypedFilterUsage.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CompareOnSameDocumentFields", "http://stackoverflow.com/questions/38258074/linq-to-mongodb-return-list-only-when" +
-                    "-values-between-2-columns-match/38295682?noredirect=1#comment64008903_38295682\r\n" +
-                    "\r\njira ticket\r\nhttps://jira.mongodb.org/browse/CSHARP-1700", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "StronglyTypedFilterUsage", "http://stackoverflow.com/questions/38361093/c-sharp-mongodb-driver-strongly-typed" +
+                    "-filter-usage", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -66,18 +65,37 @@ namespace SoQuestionsSolver
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("comparison")]
+        [NUnit.Framework.DescriptionAttribute("use strongly typed filter")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void Comparison()
+        public virtual void UseStronglyTypedFilter()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("comparison", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("use strongly typed filter", new string[] {
                         "mytag"});
-#line 9
+#line 6
 this.ScenarioSetup(scenarioInfo);
-#line 10
-testRunner.Given("ComparisionSampleData", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 11
-    testRunner.Then("Will get only result with same fields value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 7
+ testRunner.Given("Sample data from lapsus", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 8
+ testRunner.When("Asking for x = 10 and y < 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 9
+ testRunner.Then("result should be x= 10, y  = 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Use as queryable method")]
+        public virtual void UseAsQueryableMethod()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Use as queryable method", ((string[])(null)));
+#line 13
+this.ScenarioSetup(scenarioInfo);
+#line 14
+ testRunner.Given("Sample data from lapsus", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 15
+ testRunner.When("Asking as queryable for x = 10 and y < 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
+ testRunner.Then("result should be x= 10, y  = 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

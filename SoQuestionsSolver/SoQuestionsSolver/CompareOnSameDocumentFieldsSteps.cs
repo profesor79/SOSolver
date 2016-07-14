@@ -43,13 +43,13 @@ namespace SoQuestionsSolver
         [Then(@"Try to use where clause")]
         public void ThenTryToUseWhereClause()
         {
-            //var result = _collection.AsQueryable().Where(x => x.FSTicker == x.Sedol).ToList();
-
-            //foreach (var r in result)
-            //{
-            //    Debug.Write($"{r.FSTicker}{r.Sedol}");
-            //    r.FSTicker.Should().Equals(r.Sedol);
-            //}
+            // var result = _collection.AsQueryable().Where(x => x.FSTicker == x.Sedol).ToList();
+            var result = _collection.AsQueryable().Where(c => c.FSTicker.Equals(c.Sedol)).ToList();
+            foreach (var r in result)
+            {
+                Debug.Write($"{r.FSTicker}{r.Sedol}");
+                r.FSTicker.Should().Equals(r.Sedol);
+            }
         }
 
         /// <summary>TODO The then will get only result with same fields value.</summary>

@@ -8,8 +8,8 @@ https://jira.mongodb.org/browse/CSHARP-1700
 @mytag
 Scenario: comparison
 Given ComparisionSampleData
-	Then Will get only result with same fields value
-#	Then Try to use where clause
+    Then Will get only result with same fields value
+#    Then Try to use where clause
 
 
  
