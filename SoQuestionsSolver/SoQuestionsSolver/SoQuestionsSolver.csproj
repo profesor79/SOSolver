@@ -99,6 +99,19 @@
       <DependentUpon>StronglyTypedFilterUsage.feature</DependentUpon>
     </Compile>
     <Compile Include="StronglyTypedFilterUsageSteps.cs" />
+    <Compile Include="Update a document in mongodb collection with async method.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Update a document in mongodb collection with async method.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateADocumentInMongodbCollectionWithAsyncMethodSteps.cs" />
+    <Compile Include="UpdateADocumentInMongodbCollectionWithAsyncMethodStepsSUT.cs" />
+    <Compile Include="UpdateDocumentByIdField.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateDocumentByIdField.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateDocumentByIdFieldSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -110,6 +123,14 @@
     <None Include="StronglyTypedFilterUsage.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>StronglyTypedFilterUsage.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Update a document in mongodb collection with async method.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Update a document in mongodb collection with async method.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UpdateDocumentByIdField.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UpdateDocumentByIdField.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
