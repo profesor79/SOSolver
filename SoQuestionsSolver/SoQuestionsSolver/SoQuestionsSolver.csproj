@@ -71,6 +71,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirtyOnes\user5510044.cs" />
+    <Compile Include="ElemMatchMultipleElements.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElemMatchMultipleElements.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ElemMatchMultipleElementsSteps.cs" />
     <Compile Include="OldOnes\AlexGurskiy.cs" />
     <Compile Include="OldOnes\Andrei.cs" />
     <Compile Include="OldOnes\Boas.cs" />
@@ -81,7 +88,6 @@
     </Compile>
     <Compile Include="CompareOnSameDocumentFieldsSteps.cs" />
     <Compile Include="ConnectionHelper.cs" />
-    <Compile Include="OldOnes\Woozar.cs" />
     <Compile Include="OldOnes\Flo.cs" />
     <Compile Include="OldOnes\Kalaimani.cs" />
     <Compile Include="OldOnes\Lapsus.cs" />
@@ -118,6 +124,10 @@
     <None Include="CompareOnSameDocumentFields.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CompareOnSameDocumentFields.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ElemMatchMultipleElements.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ElemMatchMultipleElements.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="StronglyTypedFilterUsage.feature">
