@@ -72,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DirtyOnes\user5510044.cs" />
+    <Compile Include="DriverProjectionOfFields.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DriverProjectionOfFields.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DriverProjectionOfFieldsSteps.cs" />
     <Compile Include="ElemMatchMultipleElements.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +130,10 @@
     <None Include="CompareOnSameDocumentFields.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CompareOnSameDocumentFields.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DriverProjectionOfFields.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DriverProjectionOfFields.feature.cs</LastGenOutput>
     </None>
     <None Include="ElemMatchMultipleElements.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
