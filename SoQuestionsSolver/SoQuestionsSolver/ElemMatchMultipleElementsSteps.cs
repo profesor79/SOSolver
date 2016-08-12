@@ -9,6 +9,7 @@
 namespace SoQuestionsSolver
 {
     using MongoDB.Bson;
+    using MongoDB.Bson.Serialization;
     using MongoDB.Driver;
 
     using TechTalk.SpecFlow;
@@ -46,5 +47,7 @@ namespace SoQuestionsSolver
                 BsonDocument.Parse(
                     "{$and: [{WordsData:{$elemMatch:{UserId: ObjectId('57a87f5cc48933119cb96f93'),UserId: ObjectId('57a87f5cc48933119cb96f94')}}}, {WordsData:{$not:{$elemMatch:{MatchType: 2}}}}]}");
         }
+
+     
     }
 }

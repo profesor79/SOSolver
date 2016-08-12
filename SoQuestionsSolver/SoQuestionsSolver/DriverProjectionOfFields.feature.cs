@@ -66,11 +66,11 @@ namespace SoQuestionsSolver
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add two numbers")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         public virtual void AddTwoNumbers()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "mytag"});
+                        "ignore"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -81,6 +81,19 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("run projection", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
  testRunner.Then("result has to be without Frame filed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Deserialization from string")]
+        public virtual void DeserializationFromString()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Deserialization from string", ((string[])(null)));
+#line 13
+this.ScenarioSetup(scenarioInfo);
+#line 15
+ testRunner.When("try to parse string", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             this.ScenarioCleanup();
         }

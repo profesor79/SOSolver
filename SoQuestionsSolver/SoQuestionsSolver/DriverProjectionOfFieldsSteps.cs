@@ -14,6 +14,7 @@ namespace SoQuestionsSolver
     using FluentAssertions;
 
     using MongoDB.Bson;
+    using MongoDB.Bson.Serialization;
     using MongoDB.Driver;
 
     using TechTalk.SpecFlow;
@@ -62,6 +63,28 @@ namespace SoQuestionsSolver
         }
 
         /// <summary>TODO The frame document.</summary>
+        /// <summary>The when try to parse string.</summary>
+        [When(@"try to parse string")]
+        public void WhenTryToParseString()
+        {
+            var bjson = @"{
+                            '_id' : ObjectId('57ac672e34780e59784d7d2a'),
+                            'ActivePick' : null,
+                            'EventCodeId' : null,
+                            'Frame' : { '$binary' : 'AgY=', '$type' : '00' },
+                            'FrameTimeStamp' : ISODate('2016-08-11T11:53:18.541Z'),
+                            'ServerUserId' : 0,
+                            'ServerUserName' : null,
+                            'SesionId' : 0,
+                            'TraderId' : null,
+                            'TraderName' : null
+                        }";
+
+            var bsonDocument = BsonDocument.Parse(bjson);
+            var myObj = BsonSerializer.Deserialize<FrameDocument>(bsonDocument);
+
+        }
+
         public class FrameDocument
         {
             /// <summary>Gets or sets the _id.</summary>
