@@ -6,19 +6,18 @@
 //   TODO The program.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+using MongoDB.Driver;
+using SoQuestionsSolver;
+
 namespace ConsoleApplication2
 {
-    using System;
-
-    using MongoDB.Driver;
-
-    using SoQuestionsSolver;
-
     /// <summary>TODO The program.</summary>
     internal class Inquisitive_one2
     {
         /// <summary>TODO The main.</summary>
-        public static void Main()
+        public static void Main21()
         {
             var worker = new Processor();
             worker.ProcessData();
@@ -38,13 +37,13 @@ namespace ConsoleApplication2
                 var a1 =
                     data.Project(
                         x =>
-                        new
+                            new
                             {
-                                x.FSTicker, 
-                                x.Sedol, 
-                                x.Company, 
-                                x.Exchange, 
-                                x.LocalTicker, 
+                                x.FSTicker,
+                                x.Sedol,
+                                x.Company,
+                                x.Exchange,
+                                x.LocalTicker,
                                 IsTrue = x.Sedol == x.FSTicker
                             });
                 var a2 = a1.Match(x => x.IsTrue);

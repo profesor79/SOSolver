@@ -84,6 +84,7 @@
       <DependentUpon>ElemMatchMultipleElements.feature</DependentUpon>
     </Compile>
     <Compile Include="ElemMatchMultipleElementsSteps.cs" />
+    <Compile Include="ImportDataFromBJsonFile\ImportData.cs" />
     <Compile Include="OldOnes\AlexGurskiy.cs" />
     <Compile Include="OldOnes\Andrei.cs" />
     <Compile Include="OldOnes\Boas.cs" />
@@ -138,6 +139,9 @@
     <None Include="ElemMatchMultipleElements.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ElemMatchMultipleElements.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ImportDataFromBJsonFile\a.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="StronglyTypedFilterUsage.feature">
